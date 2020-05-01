@@ -1,0 +1,368 @@
+<html>
+ <head>
+   <meta name="viewport" content="width= device-width, initial-scale=1.0"> 
+<style>
+*{
+  	box-sizing:border-box;
+
+}
+*:focus {
+  	outline:none;  	
+}
+body{
+	background-color:rgb(230,230,230);
+	margin:0;
+}
+.header{
+	position:fixed;
+	top:0;
+	width:100%;
+	height:55px;
+	background-color:white;
+	left:0;
+	box-shadow:var(--shadow);
+	font-family:monospace;
+	display:flex;
+	align-items:center;
+	padding:0px 15px;
+	font-size:23px;
+	font-weight:800;
+	z-index:100;
+}
+.logo {
+	float:right;
+	position:fixed;
+	right:15px;
+	border-radius:50%;
+	display:flex;
+	align-items:center;
+	justify-content:center;
+}
+.logo:before {
+	content:'';
+	background-color:rgba(0,0,0,0.4);
+	animation:border 2s infinite;
+	border-radius:50%;
+	width:30px;
+	height:30px;
+	z-index:0;
+	position:absolute;
+}
+@keyframes border {
+	50% {
+		width:50px;
+		height:50px;
+	}
+	0% , 100% {
+		width:30px;
+		height:30px;
+	}
+}
+.logo-img-elm {
+	width:38px;
+	z-index:5;
+	position:relative;
+}
+.gobal-div-cont {
+	position:absolute;
+	top:55px;
+	width:100%;
+	padding:30px 0px;
+}
+.indv-cont{
+	width:90%;
+	margin:0% 5%;
+	background-color:white;
+	padding:10px;
+	border-radius:10px;
+	position:relative;
+	overflow:hidden;
+	height:200px;
+}
+.img-cont {
+	position:absolute;
+	width:100%;
+	height:100%;
+	top:0;
+	left:0;
+}
+.indv-cont:hover .indv-img{
+	transform:scale(0.7) translateX(100px);
+}
+.indv-cont:hover .value{
+	transform:scale(1.4) translateX(30px);
+}
+.indv-img {
+	height:80%;
+	opacity:0.5;
+	position:absolute;
+	right:10px;
+	transition:transform 0.2s 0s;
+}
+.total {
+	position:absolute;
+	top:20px;
+	font-size:20px;
+	padding:0px 10px;
+	font-family:monospace;
+	transition:0.2s;
+}
+.value{
+	position:absolute;
+	font-size:25px;
+	top:calc(50% - 25px);
+	font-family:monospace;
+	padding:0px 25px;
+	width:100%;
+	height:50px;
+	display:flex;
+	align-items:center;
+	transition:transform 0.2s 0s;
+}
+.source {
+	position:absolute;
+	right:15px;
+	font-family:monospace;
+	background-color:white;
+	padding:8px;
+	border-radius:5px;
+}
+.footer {
+	width:100%;
+	padding:15px;
+	background-color:white;
+	position:absolute;
+	bottom:0;
+}
+.menu {
+	position:fixed;
+	top:60px;
+	width:200px;
+	background-color:white;
+	border-radius:5px;
+	box-shadow:var(--shadow);
+	z-index:110;
+	right:10px;
+	padding:5px;
+	opacity:0;
+	visibility:hidden;
+	transform:translateX(60px);
+	transition:0.2s;
+}
+.indv-menu-item {
+	width:100%;
+	padding:6px 10px;
+	font-family:monospace;
+	position:relative;
+	display:flex;
+	align-items:center;
+	margin:8px 0%;
+	transition:0.3s;
+	border-radius:3px;
+}
+.indv-menu-item:hover {
+	background-color:rgb(200,200,200);
+}
+.tt {
+	font-size:15px;
+	display:block;
+	width:50%;
+}
+.tt-img {
+	height:20px;
+	position:absolute;
+	right:5px;
+	border-radius:50%;
+}
+.menu-bg {
+	position:fixed;
+	height:100%;
+	width:100%;
+	top:0;
+	left:0;
+	z-index:100;
+	visibility:hidden;
+}
+a {
+	cursor:none;
+	text-decoration:none;
+	color:black;
+}
+a:link {
+	color:black;
+}
+</style>
+<script src="lib/lib.js"></script>
+<link rel="stylesheet" href="lib/lib.css">
+</head>
+<body>
+<div class="header">
+	COVID 19
+	<div class="logo" onclick="openMenu()">
+		<div class="img-lg">
+			<img class="logo-img-elm" src="img/logo.png">
+		</div>
+	</div>
+</div>
+<div class="menu">
+	<div class="indv-menu-item" onclick="openLink('https://twitter.com/fbn776')">
+		<div class="tt">Twitter</div>
+		<img class="tt-img" src="ic/twitter.png">
+	</div>
+	<div class="indv-menu-item" onclick="openLink('https://corona.lmao.ninja')">
+		<div class="tt">Data</div>
+		<img class="tt-img" src="ic/source.png">
+	</div>
+	<div class="indv-menu-item" onclick="openLink('https://fbn-apps.000webhostapp.com/')">
+		<div class="tt">Website</div>
+		<img class="tt-img" src="ic/internet.png">
+	</div>
+	<a class="indv-menu-item" href="details.html">
+		<div class="tt">Details</div>
+		<img class="tt-img" style="background-color:#2196F3;" src="ic/chip.png">
+	</a>
+</div>
+<div class="menu-bg"></div>
+<div class="gobal-div-cont">
+<!--Total-->
+	<div class="indv-cont">
+		<div class="img-cont flex">
+			<img src="ic/locations.png" class="indv-img">
+		</div>
+		<div class="total">Total Cases</div>
+		<div class="value" id="totalCases">Loading...</div>
+	</div><br><br>
+<!--Resolved-->
+	<div class="indv-cont">
+		<div class="img-cont flex">
+			<img src="ic/medicine.png" class="indv-img">
+		</div>
+		<div class="total">Recovered Cases</div>
+		<div class="value" id="resolvedCases">Loading...</div>
+	</div><br><br>
+<!--Unresolved-->
+	<div class="indv-cont">
+		<div class="img-cont flex">
+			<img src="ic/medical.png" class="indv-img">
+		</div>
+		<div class="total">Tests Done</div>
+		<div class="value" id="tested">Loading...</div>
+	</div><br><br>
+<!--Death-->
+	<div class="indv-cont">
+		<div class="img-cont flex">
+			<img src="ic/virus.png" class="indv-img">
+		</div>
+		<div class="total">Total Deaths</div>
+		<div class="value" id="death">Loading...</div>
+	</div><br><br>
+<!--Recent-->
+	<div class="indv-cont">
+		<div class="img-cont flex">
+			<img src="ic/report.png" class="indv-img">
+		</div>
+		<div class="total">Recent Cases</div>
+		<div class="value" id="recent-case">Loading...</div>
+	</div><br><br>
+<!--Recent death-->
+	<div class="indv-cont">
+		<div class="img-cont flex">
+			<img src="ic/death.png" class="indv-img">
+		</div>
+		<div class="total">Recent Deaths</div>
+		<div class="value" id="recent-death">Loading...</div>
+	</div><br><br>
+<!--Active-->
+	<div class="indv-cont">
+		<div class="img-cont flex">
+			<img src="ic/file.png" class="indv-img">
+		</div>
+		<div class="total">Active Cases</div>
+		<div class="value" id="active">Loading...</div>
+	</div><br><br>
+<!--Serious-->
+	<div class="indv-cont">
+		<div class="img-cont flex">
+			<img src="ic/ambulance.png" class="indv-img">
+		</div>
+		<div class="total">Serious Cases</div>
+		<div class="value" id="serious">Loading...</div>
+	</div><br><br>
+<!--Serious-->
+	<div class="indv-cont">
+		<div class="img-cont flex">
+			<img src="ic/international.png" class="indv-img">
+		</div>
+		<div class="total">Affected Countries</div>
+		<div class="value" id="country">Loading...</div>
+	</div>
+</div>
+<script>
+var main={
+	totalCase:s("#totalCases"),
+	resolved:s("#resolvedCases"),
+	test:s("#tested"),
+	death:s("#death"),
+	recentCase:s("#recent-case"),
+	recentDeath:s("#recent-death"),
+	active:s("#active"),
+	serious:s("#serious"),
+	country:s("#country"),
+}
+var menu=s(".menu");
+var menuBg=s(".menu-bg");
+let url="https://corona.lmao.ninja/v2/all";
+
+fetch(url).then(res=>res.json()).then((out) => {
+	main.totalCase.innerHTML=out.cases;
+	main.resolved.innerHTML=out.recovered;
+	main.test.innerHTML=out.tests;
+	main.death.innerHTML=out.deaths;
+	main.recentCase.innerHTML=out.todayCases;
+	main.recentDeath.innerHTML=out.todayDeaths;
+	main.active.innerHTML=out.active;
+	main.serious.innerHTML=out.critical;
+	main.country.innerHTML=out.affectedCountries;
+}).catch(err=>{
+	throw err;
+	showAlert(err);
+});
+/*
+{
+"updated":1588321282568,
+"cases":3318455,
+"todayCases":14235,
+"deaths":234253,
+"todayDeaths":423,
+"recovered":1048467,
+"active":2035735,
+"critical":50934,
+"casesPerOneMillion":426,
+"deathsPerOneMillion":30,
+"tests":33719318,
+"testsPerOneMillion":4328.6,
+"affectedCountries":214
+}
+*/
+function openLink(x){
+	window.open(x);
+}
+function openMenu() {
+	menu.style.visibility="visible";
+	menuBg.style.visibility="visible";
+	menu.style.opacity=1;
+	menu.style.transform="translateX(0px)";
+}
+menuBg.addEventListener("click",closeAll);
+menuBg.addEventListener("touchstart",closeAll);
+function closeAll(){
+	menu.style.opacity=0;
+	menu.style.transform="translateX(60px)";	
+	setTimeout(()=>{
+		menu.style.visibility="hidden";
+		menuBg.style.visibility="hidden";
+	},200);
+}
+</script>
+ </body>
+</html>
