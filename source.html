@@ -1,0 +1,79 @@
+<html>
+ <head>
+   <meta name="viewport" content="width= device-width, initial-scale=1.0"> 
+<style>
+*{
+  	box-sizing:border-box;
+}
+*:focus {
+  	outline:none;  	
+}
+body {
+	margin:0;
+	background-color:rgb(230,230,230);
+	overflow:hidden;
+}
+.header  {
+	width:100%;
+	height:55px;
+	background-color:white;
+	box-shadow:var(--shadow);
+	display:flex;
+	align-items:center;
+	position:relative;
+	font-family:monospace;
+	font-size:25px;
+	font-weight:500;
+}
+.return {
+	height:40px;
+	margin-right:25px;
+	margin-left:10px;
+	transition:0.2s;
+	border-radius:50%;
+}
+.return:hover {
+	background-color:rgba(0,0,0,0.2);
+}
+.cont {
+	width:90%;
+	border-radius:5px;
+	background-color:white;
+	padding:10px;
+	margin:3% 5%;
+	font-family:monospace;
+}
+.title{
+	font-size:18px;
+	margin:5px;
+}
+.sub {
+	padding:10px;
+}
+</style>
+<link rel="stylesheet" href="lib/lib.css">
+<script src="lib/lib.js"></script>
+<script src="lib/chart/Chart.min.js"></script>
+</head>
+<body>
+<div class="header">
+	<a style="cursor:none;" href="index.html"><img src="ic/arrowLeft.png" class="return"></a>
+	Source
+</div>
+<div class="cont">
+	<div class="title">API used:</div>
+	<div class="sub">World data</div>
+	<ul><a href="https://corona.lmao.ninja/v2/all">https://corona.lmao.ninja/v2/all</a></ul>
+	
+	<div class="sub">India's  data</div>
+	<ul><a href="https://disease.sh/v2/countries/IN">https://disease.sh/v2/countries/IN</a></ul>
+	
+	<div class="sub">Indian State data</div>
+	<ul><a href="https://api.rootnet.in/covid19-in/stats/latest">https://api.rootnet.in/covid19-in/stats/latest</a></ul>
+</div>
+
+<script>
+
+</script>
+ </body>
+</html>

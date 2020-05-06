@@ -1,0 +1,130 @@
+<html>
+ <head>
+   <meta name="viewport" content="width= device-width, initial-scale=1.0"> 
+<style>
+*{
+  	box-sizing:border-box;
+}
+*:focus {
+  	outline:none;  	
+}
+body {
+	margin:0;
+	background-color:rgb(230,230,230);
+	overflow:scroll;
+}
+.header  {
+	width:100%;
+	height:55px;
+	background-color:white;
+	box-shadow:var(--shadow);
+	display:flex;
+	align-items:center;
+	position:relative;
+	font-family:monospace;
+	font-size:25px;
+	font-weight:500;
+}
+.return {
+	height:40px;
+	margin-right:25px;
+	margin-left:10px;
+	transition:0.2s;
+	border-radius:50%;
+}
+.return:hover {
+	background-color:rgba(0,0,0,0.2);
+}
+.cont {
+	width:90%;
+	border-radius:5px;
+	background-color:white;
+	padding:10px;
+	margin:3% 5%;
+	font-family:monospace;
+}
+.title{
+	font-size:18px;
+	margin:5px;
+}
+.sub {
+	padding:10px;
+}
+ul {
+	overflow:scroll;
+}
+textarea {
+	width:100%;
+	background-color:rgb(240,240,240);
+	border:none;
+	border-radius:5px;
+	padding:10px;
+	margin-top:10px;
+}
+</style>
+<link rel="stylesheet" href="lib/lib.css">
+<script src="lib/lib.js"></script>
+<script src="lib/chart/Chart.min.js"></script>
+</head>
+<body>
+<div class="header">
+	<a style="cursor:none;" href="index.html"><img src="ic/arrowLeft.png" class="return"></a>
+	Details
+</div>
+<div class="cont">
+	<div class="title">World Data API:</div>
+	<textarea id="world">Loading...</textarea>
+</div>
+<div class="cont">
+	<div class="title">India's Data API:</div>
+	<textarea id="india">Loading...</textarea>
+</div>
+<div class="cont">
+	<div class="title">Indian State Data API:</div>
+	<textarea id="state">Loading...</textarea>
+</div>
+<script>
+var data={
+	world:s("#world"),
+	india:s("#india"),
+	state:s("#state"),
+}
+
+let worldData="https://corona.lmao.ninja/v2/all";
+fetch(worldData).then(res=>res.json()).then((out) => {
+	data.world.value=JSON.stringify(out);
+	data.world.style.height=data.world.scrollHeight+"px"
+}).catch(err=>{
+	showAlert(err);
+	data.world.value=err;
+	setTimeout(()=>{
+		showAlert("Refresh the page to try again");
+	},2000);
+});
+
+let indianData="https://disease.sh/v2/countries/IN";
+fetch(indianData).then(res=>res.json()).then((out) => {
+	data.india.value=JSON.stringify(out);
+	data.india.style.height=data.india.scrollHeight+"px"
+}).catch(err=>{
+	showAlert(err);
+	data.india.value=err;
+	setTimeout(()=>{
+		showAlert("Refresh the page to try again");
+	},2000);
+});
+
+let stateData="https://api.rootnet.in/covid19-in/stats/latest";
+fetch(stateData).then(res=>res.json()).then((out) => {
+	data.state.value=JSON.stringify(out);
+	data.state.style.height=data.state.scrollHeight+"px"
+}).catch(err=>{
+	showAlert(err);
+	data.state.value=err;
+	setTimeout(()=>{
+		showAlert("Refresh the page to try again");
+	},2000);
+});
+</script>
+ </body>
+</html>
