@@ -1,0 +1,375 @@
+.page {
+	position:fixed;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+}
+.body {
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	transition:0.3s;
+}
+.covid-main {
+	background-color:white;
+	width:90%;
+	height:80%;
+	border-radius:10px;
+	box-shadow:var(--shadow);
+	overflow:hidden;
+	position:relative;
+}
+.img-bg-cont {
+	position:absolute;
+	width:100%;
+	height:100%;
+}
+.img-bg {
+	position:absolute;
+	opacity:0.6;
+	z-index:0;
+}
+#bg00 {
+	width:250px;
+	top:-50px;
+	right:-60px;
+}
+#bg01 {
+	width:100px;
+	bottom:20%;
+	right:-60px;
+}
+#bg02 {
+	width:150px;
+	top:-50px;
+	left:-60px;
+}
+#bg03 {
+	width:150px;
+	bottom:-50px;
+	left:-60px;
+}
+.main-non {
+	width:100%;
+	height:100%;
+	position:absolute;
+	z-index:2;
+}
+.tt {
+	width:100%;
+	text-align:center;
+	font-family:monospace;
+	font-size:35px;
+	padding-top:25px;
+}
+.list {
+	width:100%;
+	padding:0px 25px;
+	font-family:monospace;
+	font-family:18px;
+}
+.indv {
+	margin:25px 0px;
+}
+.indv li {
+	list-style-type: circle;
+}
+.btn-cont {
+	width:100%;
+	text-align:center;
+	position:absolute;
+	bottom:0;
+	padding-bottom:30px;
+}
+.more {
+	background-color:#EF5350;
+	border-radius:4px;
+	border:none;
+	padding:8px 15px;
+	color:white;
+	font-family:monospace;
+	font-size:16px;
+	box-shadow:var(--shadow);
+	position:relative;
+	transition:0.2s;
+}
+.more:before {
+	content:'';
+	height:100%;
+	width:50%;
+	background-color:rgba(255,255,255,0.1);
+	position:absolute;
+	left:0;
+	top:0;
+}
+.more:hover {
+	background-color:#212121;
+}
+.page-two {
+	overflow:scroll;
+	z-index:100;
+//	background-color:inherit;
+	opacity:0;
+	visibility:hidden;
+	transform:translateY(200px) scale(0.8);
+	transition:0.3s;
+}
+.indv-cont{
+	width:90%;
+	margin:25px 5%;
+	background-color:white;
+	padding:10px;
+	border-radius:10px;
+	position:relative;
+	overflow:hidden;
+	height:200px;
+}
+.indv-cont:nth-child(1) {
+	margin:0px 5% 25px 5%;
+}
+.indv-cont:last-child {
+	margin:25px 5% 0px 5%;
+}
+.img-cont {
+	position:absolute;
+	width:100%;
+	height:100%;
+	top:0;
+	left:0;
+}
+.indv-cont:hover .indv-img{
+	transform:scale(0.7) translateX(100px);
+}
+.indv-cont:hover .value{
+	transform:scale(1.4) translateX(30px);
+}
+.indv-img {
+	height:80%;
+	opacity:0.5;
+	position:absolute;
+	right:10px;
+	transition:transform 0.2s 0s;
+}
+.total {
+	position:absolute;
+	top:20px;
+	font-size:20px;
+	padding:0px 10px;
+	font-family:monospace;
+	transition:0.2s;
+}
+.value{
+	position:absolute;
+	font-size:25px;
+	top:calc(50% - 25px);
+	font-family:monospace;
+	padding:0px 25px;
+	width:100%;
+	height:50px;
+	display:flex;
+	align-items:center;
+	transition:transform 0.2s 0s;
+}
+.header  {
+	width:100%;
+	height:55px;
+	background-color:white;
+	box-shadow:var(--shadow);
+	display:flex;
+	align-items:center;
+	position:relative;
+	font-family:monospace;
+	font-size:25px;
+	font-weight:500;
+}
+.return {
+	height:40px;
+	margin-right:25px;
+	margin-left:10px;
+	transition:0.2s;
+	border-radius:50%;
+}
+.return:hover {
+	background-color:rgba(0,0,0,0.2);
+}
+.bottom-link-bar {
+	position:fixed;
+	bottom:0;
+	right:0;
+	width:60%;
+	height:45px;
+	background-color:white;
+	clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%);
+	box-shadow:var(--shadow);
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	padding-left:25px;
+}
+.top-link-bar {
+	position:fixed;
+	width:60%;
+	height:45px;
+	background-color:white;
+	box-shadow:var(--shadow);
+	top:0;
+	left:0;
+	clip-path: polygon(0 0, 100% 0, 85% 100%, 0 100%);
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	padding-right:25px;
+}
+.world-data-cont {
+	margin-top:15px;
+}
+.scroll-down {
+	position:absolute;
+	right:10px;
+	height:100%;
+	display:flex;
+	align-items:center;
+}
+.indv-scroll {
+	height:50%;
+	animation:scale 1s linear infinite ;
+}
+@keyframes scale{
+	50% {
+		transform:translateY(-5px);
+	}
+	100% , 0%{
+		transform:translateY(5px);
+	}
+}
+.next-page-india , .next-page-state{
+	width:100%;
+	background-color:white;
+	border-radius:2px;
+	height:50px;
+	display:flex;
+	align-items:center;
+	box-shadow:var(--shadow);
+	position:relative;
+	font-family:monospace;
+	font-size:20px;
+	transition:0.2s;
+}
+.btn-img {
+	height:100%;
+}
+.india-cont {
+	height:100%;
+	background-color:rgb(240,240,240);
+	padding:5px;
+}
+#right {
+	float:right;
+	position:absolute;
+	right:0;
+}
+#left {
+	margin-right:30px;
+}
+.next-page-india:active{
+	transform:scale(1.1);
+}
+#worldDataGraph {
+	background-color:white;
+	border-radius:5px;
+}
+.page-three {
+	overflow:scroll;
+	z-index:100;
+	background-color:inherit;
+	opacity:0;
+	visibility:hidden;
+	transform:translateY(200px) scale(0.8);
+	transition:0.3s;
+}
+.india-data-cont , .state-data-cont{
+	margin-top:15px;
+}
+.page-four {
+	overflow:scroll;
+	z-index:100;
+	background-color:inherit;
+	opacity:0;
+	visibility:hidden;
+	transform:translateY(200px) scale(0.8);
+	transition:0.3s;
+	width:100%;
+}
+.state-data-cont {
+	position:relative;
+	width:100%;
+}
+.stateData {
+	width:90%;
+	margin:5% 5%;
+	padding:8px;
+	background-color:white;
+	border-radius:5px;
+	position:relative;
+	box-shadow:var(--shadow);
+	overflow:hidden;
+}
+.stateName {
+	width:100%;
+	padding:5px 15px;
+	font-size:26px;
+	font-family:monospace;
+	overflow:scroll;
+}
+.state-indv {
+	padding:3px 30px;
+}
+.head {
+	font-family:monospace;
+	font-size:16px;
+	padding:5px 0px;
+}
+.head_val {
+	font-family:monospace;
+	padding-left:15px;
+	font-size:20px;
+}
+.thisCanvas {
+	width:100%;
+	height:100%;
+	position:absolute;
+	top:0;
+	left:0;
+	z-index:0;
+	opacity:0.6;
+	background-color:white;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	padding:10px;
+}
+.stateDataMainCont {
+	position:relative;
+	z-index:2;
+	width:100%;
+}
+.indv-scroll {
+	height:80%;
+	border-radius:50%;
+	background-color:rgba(0,0,0,0.2);
+}
+.home-link {
+	height:70%;
+	box-shadow:var(--shadow);
+	border-radius:50%;	
+	background-color:none;
+	margin:0% 10px;
+	transition:0.3s;
+}
+.home-link:hover {
+	transform:scale(0.8);
+}
+a {
+	cursor:none;
+}
